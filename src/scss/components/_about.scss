@@ -1,0 +1,99 @@
+.about {
+  padding-top: 30px;
+  padding-bottom: 69px;
+  background-color: $color-black;
+
+  @include tablet {
+    padding-bottom: 81px;
+  }
+
+  @include small-tablet {
+    padding-bottom: 63px;
+  }
+
+  @include mobile {
+    padding-top: 32px;
+    padding-bottom: 60px;
+  }
+
+  &__title {
+    margin-bottom: 2px;
+  }
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      row-gap: 23px;
+    }
+  }
+
+  &__desc {
+    padding-top: 2px;
+    line-height: 28px;
+
+    @include mobile {
+      line-height: 25px;
+    }
+  }
+
+  &__content {
+    align-self: start;
+  }
+
+  &__image {
+    margin-bottom: 24px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    color: $color-white;
+
+    @include tablet {
+      margin-bottom: 23px;
+    }
+
+    @include mobile {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 17px;
+
+    @include mobile {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__form {
+    display: flex;
+
+    @include tablet {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__label {
+    position: relative;
+    margin-right: 30px;
+    width: 100%;
+
+    @include validate-error-label();
+
+    @include tablet {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__input {
+    @include validate-error-dark-field();
+  }
+
+  &__btn {
+    flex-shrink: 0;
+  }
+}

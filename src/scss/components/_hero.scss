@@ -1,0 +1,117 @@
+.hero {
+  padding-top: 41px;
+  padding-bottom: 68px;
+  background-color: $color-white;
+
+  @include tablet {
+    padding-top: 34px;
+  }
+
+  @include small-tablet {
+    padding-top: 81px;
+  }
+
+  @include mobile {
+    padding-top: 75px;
+    padding-bottom: 50px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      row-gap: 34px;
+    }
+  }
+
+  &__article {
+    position: relative;
+
+    @include mobile {
+      min-height: 422px;
+    }
+
+    @include hashtag('мастеркласс');
+
+    &::after {
+      right: 15px;
+      top: 15px;
+      padding: 7px 15px;
+
+      @include mobile {
+        right: 5px;
+        top: 5px;
+        padding: 4px 7px;
+      }
+    }
+  }
+
+  &__works {
+    @include small-tablet {
+      margin-top: -2px;
+    }
+
+    @include mobile {
+      margin-top: 0;
+    }
+
+    &-title {
+      margin-bottom: 18px;
+      line-height: 25px;
+
+      @include tablet {
+        margin-bottom: 25px;
+      }
+
+      @include small-tablet {
+        margin-bottom: 17px;
+        font-size: 22px;
+        line-height: 23px;
+      }
+
+      @include mobile {
+        margin-bottom: 16px;
+        font-size: 18px;
+        line-height: 19px;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    &-item {
+      &:first-child {
+        grid-column: span 2;
+      }
+    }
+
+    &-link {
+      color: $color-black;
+      transition: filter .2s ease-out;
+
+      @include hover {
+        filter: brightness(0.6);
+      }
+
+      &:active {
+        filter: brightness(0.6);
+      }
+
+      &.focus-visible {
+        filter: brightness(0.6);
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

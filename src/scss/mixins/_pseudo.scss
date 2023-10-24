@@ -1,0 +1,53 @@
+@mixin hashtag($content) {
+  &::after{
+    content: '##{$content}';
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    display: block;
+    padding: 6px 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-white;
+    background-color: $color-black;
+    pointer-events: none;
+
+    @include mobile {
+      right: 5px;
+      top: 5px;
+      padding: 4px 14px;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}
+
+@mixin focus-bg {
+  &::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    top: 1px;
+    bottom: -1px;
+    background-color: transparent;
+    z-index: -1;
+    transition: background-color .2s ease-out;
+  }
+}
+
+@mixin menu-bg {
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $color-dark-gray;
+    pointer-events: none;
+    transition: background-color .2s ease-out;
+  }
+}

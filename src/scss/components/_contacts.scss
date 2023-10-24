@@ -1,0 +1,277 @@
+.contacts {
+  padding-top: 68px;
+  padding-bottom: 68px;
+  background-color: $color-white;
+
+  @include mobile {
+    padding-top: 34px;
+    padding-bottom: 50px;
+  }
+
+  &__title {
+    margin-bottom: 15px;
+
+    @include tablet {
+      margin-bottom: 14px;
+    }
+
+    @include small-tablet {
+      margin-bottom: 22px;
+    }
+
+    @include mobile {
+      margin-bottom: 14px;
+    }
+  }
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+
+    @include tablet {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    @include small-tablet {
+      grid-template-columns: repeat(6, 1fr);
+      row-gap: 23px;
+    }
+
+    @include mobile {
+      row-gap: 22px;
+    }
+  }
+
+  &__location {
+    grid-column: span 8;
+    align-self: end;
+
+    @include tablet {
+      grid-column: span 5;
+    }
+
+    @include small-tablet {
+      grid-column: span 6;
+    }
+
+    @include mobile {
+      grid-column: span 6;
+      margin: 0 -21px;
+    }
+
+    &-wrap {
+      position: relative;
+      margin-bottom: 1px;
+      min-height: 460px;
+
+      @include tablet {
+        margin-bottom: 0;
+      }
+    }
+
+    &-map {
+      width: 100%;
+      height: 460px;
+
+      @include mobile {
+        height: 472px;
+      }
+    }
+
+    &-details {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      padding: 73px 60px 50px;
+      max-width: 50%;
+      width: 410px;
+      height: 100%;
+      background-color: $color-black-85;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 100;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease-out, visibility .2s ease-out, opacity .2s ease-out;
+
+      @include tablet {
+        right: 0;
+        top: auto;
+        bottom: 0;
+        padding: 25px 30px;
+        max-width: none;
+        width: auto;
+        height: 157px;
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+
+      @include mobile {
+        padding: 25px 19px 14px;
+      }
+
+      &--is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &-address {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      @include tablet {
+        max-width: 410px;
+      }
+
+      @include mobile {
+        max-width: 270px;
+      }
+    }
+
+    &-close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      transition: filter .2s ease-out;
+
+      @include hover {
+        filter: brightness(0.7);
+      }
+
+      &:active {
+        filter: brightness(0.7);
+      }
+
+      &.focus-visible {
+        filter: brightness(0.7);
+      }
+    }
+  }
+
+  &__message {
+    grid-column: span 4;
+
+    @include tablet {
+      grid-column: span 3;
+    }
+
+    @include small-tablet {
+      grid-column: span 4;
+    }
+
+    @include mobile {
+      grid-column: span 6;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 5px;
+
+    @include mobile {
+      margin-bottom: 9px;
+    }
+  }
+
+  &__desc {
+    margin-bottom: 15px;
+
+    @include mobile {
+      line-height: 18px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__label {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    line-height: 0;
+
+    @include validate-error-label();
+  }
+
+  &__input {
+    @include validate-error-light-field();
+  }
+
+  &__textarea {
+    padding-top: 14px;
+    height: 150px;
+    resize: none;
+
+    @include mobile {
+      padding-top: 11px;
+    }
+
+    @include validate-error-light-field();
+  }
+}
+
+.address {
+  font-style: normal;
+
+  &__subtitle {
+    margin-bottom: 5px;
+
+    @include mobile {
+      margin-bottom: 11px;
+    }
+  }
+
+  &__desc {
+    margin-bottom: 3px;
+    line-height: 28px;
+
+    @include mobile {
+      margin-bottom: 12px;
+      line-height: 18px;
+    }
+  }
+
+  &__call {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: $color-primary;
+    transition: filter .2s ease-out;
+
+    @include mobile {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+
+      & svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @include hover {
+      filter: brightness(0.7);
+    }
+
+    &:active {
+      filter: brightness(0.7);
+    }
+
+    &.focus-visible {
+      filter: brightness(0.7);
+    }
+  }
+}

@@ -1,0 +1,166 @@
+.footer {
+  position: relative;
+  padding-top: 23px;
+  padding-bottom: 17px;
+  background-color: $color-black;
+
+  @include small-tablet {
+    padding-bottom: 19px;
+  }
+
+  @include mobile {
+    padding: 0;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+
+    @include tablet {
+      grid-template-columns: 300px 1fr 170px;
+      gap: 0;
+    }
+
+    @include small-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      padding: 0;
+    }
+  }
+
+  &__brand {
+    position: relative;
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 3px;
+
+    @include tablet {
+      grid-column: span 1;
+      padding-top: 7px;
+    }
+
+    @include small-tablet {
+      align-self: start;
+    }
+
+    @include mobile {
+      grid-row: 2;
+      align-self: center;
+      align-items: center;
+      padding: 14px 21px;
+
+      @include menu-bg();
+    }
+
+    &-logo {
+      margin-bottom: 5px;
+      color: $color-white;
+      z-index: 1;
+
+      @include tablet {
+        width: 166px;
+        height: 27px;
+      }
+
+      @include mobile {
+        margin-bottom: 3px;
+        width: 111px;
+        height: 18px;
+      }
+    }
+
+    &-copyright {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      color: $color-light-gray;
+      z-index: 1;
+
+      @include mobile {
+        font-size: 10px;
+        line-height: 13px;
+      }
+    }
+  }
+
+  &__blockquote {
+    grid-column: span 5;
+    justify-self: start;
+    margin: 0;
+
+    @include tablet {
+      grid-column: 2;
+      justify-self: center;
+    }
+
+    @include small-tablet {
+      display: none;
+    }
+  }
+
+  &__social {
+    grid-column: span 3;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+      grid-column: 3;
+    }
+
+    @include small-tablet {
+      grid-column: span 1;
+    }
+
+    @include mobile {
+      justify-self: center;
+      padding: 30px 21px 29px;
+    }
+
+    &-desc {
+      display: block;
+      margin-bottom: 9px;
+
+      @include mobile {
+        font-size: 16px;
+      }
+    }
+
+    &-list {
+      display: flex;
+      justify-content: center;
+    }
+
+    &-item {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+
+    &-link {
+      display: inline-block;
+      color: $color-silver;
+      transition: color .2s ease-out;
+
+      @include hover {
+        color: $color-primary;
+      }
+
+      &:active {
+        color: $color-bright-primary;
+      }
+
+      &.focus-visible {
+        color: $color-dark-primary;
+      }
+    }
+  }
+}

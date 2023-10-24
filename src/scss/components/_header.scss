@@ -1,0 +1,354 @@
+.header {
+  padding-top: 24px;
+  padding-bottom: 25px;
+  background-color: $color-black;
+
+  @include tablet {
+    padding-top: 27px;
+    padding-bottom: 26px;
+  }
+
+  @include mobile {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  &__container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    align-items: center;
+
+    @include tablet {
+      grid-template-columns: repeat(8, 1fr);
+      gap: 30px;
+    }
+
+    @include small-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 26px;
+    }
+  }
+
+  &__logo {
+    grid-column: span 3;
+    justify-self: start;
+    color: $color-white;
+
+    @include tablet {
+      grid-column: span 2;
+      width: 166px;
+      height: 27px;
+    }
+
+    @include small-tablet {
+      grid-column: 1;
+    }
+
+    @include mobile {
+      width: 112px;
+      height: 18px;
+    }
+  }
+
+  &__menu {
+    grid-column: span 8;
+    z-index: 1000;
+    transition: height .2s ease-out;
+
+    @include tablet {
+      grid-column: span 5;
+    }
+
+    @include small-tablet {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 26px);
+      padding: 12px 27px;
+      height: 45px;
+
+      @include menu-bg();
+    }
+
+    @include mobile {
+      top: calc(100% + 25px);
+      padding: 14px 21px 13px;
+
+      &--is-open {
+        height: calc(100vh - 70px);
+
+        &::before {
+          background-color: $color-black;
+        }
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+
+    @include mobile {
+      @include burger();
+    }
+  }
+
+  &__nav {
+    max-width: 742px;
+    transform-origin: top;
+    transition: visibility .2s ease-out, opacity .2s ease-out;
+
+    @include tablet {
+      max-width: 558px;
+    }
+
+    @include small-tablet {
+      max-width: none;
+    }
+
+    @include mobile {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 45px;
+      bottom: 0;
+      display: none;
+      flex-direction: column;
+      padding: 2px 21px 36px;
+      overflow: auto;
+      visibility: hidden;
+      opacity: 0;
+
+      &--is-open {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &--is-hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &-list {
+      display: flex;
+      justify-content: space-between;
+
+      @include mobile {
+        flex-direction: column;
+        margin-bottom: 184px;
+      }
+    }
+
+    &-item {
+      &:not(:last-child) {
+        margin-right: 5px;
+
+        @include mobile {
+          margin-right: 0;
+        }
+      }
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
+    }
+
+    &-link {
+      position: relative;
+      white-space: nowrap;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      color: $color-white;
+      z-index: 1;
+      transition: color .2s ease-out;
+
+      @include focus-bg();
+
+      @include hover {
+        color: $color-primary;
+      }
+
+      &:active {
+        color: $color-bright-primary;
+      }
+
+      &.focus-visible {
+        color: $color-white;
+
+        &::before {
+          background-color: $color-dark-primary;
+        }
+      }
+    }
+
+    &-call {
+      display: none;
+      align-items: flex-start;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: $color-primary;
+      z-index: 1000;
+      transition: filter .2s ease-out;
+
+      & svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      @include mobile {
+        display: flex;
+      }
+
+      &:active {
+        filter: brightness(0.7);
+      }
+
+      &.focus-visible {
+        filter: brightness(0.7);
+      }
+    }
+  }
+
+  &__search {
+    justify-self: end;
+    width: 25px;
+    height: 25px;
+    color: $color-white;
+    transition: color .2s ease-out;
+
+    @include small-tablet {
+      grid-column: 2;
+    }
+
+    @include mobile {
+      width: 20px;
+      height: 20px;
+
+      & svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @include hover {
+      color: $color-primary;
+    }
+
+    &:active {
+      color: $color-bright-primary;
+    }
+
+    &.focus-visible {
+      color: $color-dark-primary;
+    }
+
+    &-form {
+      position: absolute;
+      left: 300px;
+      right: 31px;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      background-color: $color-black;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 1000;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .2s ease-out, visibility .2s ease-out, opacity .2s ease-out;
+
+      @include tablet {
+        left: 250px;
+      }
+
+      @include small-tablet {
+        right: 27px;
+        bottom: auto;
+        height: 27px;
+      }
+
+      @include mobile {
+        left: 21px;
+        right: 21px;
+        height: 20px;
+      }
+
+      &--is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    &-input {
+      margin-right: 10px;
+      padding-left: 0;
+      width: 100%;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      color: $color-white;
+      background-color: $color-black;
+      border-bottom: 1px solid $color-light-gray;
+      transition: border-color .2s ease-out;
+
+      &::placeholder {
+        color: $color-light-gray;
+        transition: opacity .2s ease-out;
+      }
+
+      @include mobile {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      @include hover {
+        border-bottom-color: $color-primary;
+      }
+
+      &.focus-visible {
+        border-bottom-color: $color-bright-primary;
+
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+
+    &-close {
+      flex-shrink: 0;
+      width: 25px;
+      height: 25px;
+      transition: filter .2s ease-out;
+
+      @include mobile {
+        width: 20px;
+        height: 20px;
+
+        & svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      @include hover {
+        filter: brightness(0.7);
+      }
+
+      &:active {
+        filter: brightness(0.7);
+      }
+
+      &.focus-visible {
+        filter: brightness(0.7);
+      }
+    }
+  }
+}
+
+

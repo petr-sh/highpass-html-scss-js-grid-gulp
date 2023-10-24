@@ -1,0 +1,280 @@
+html {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  font-family: 'TT Firs Neue', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: $color-white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  line-height: 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.input-reset {
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+.focus-visible:focus {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 31px;
+  max-width: 1352px;
+
+  @include small-tablet {
+    padding: 0 27px;
+  }
+
+  @include mobile {
+    padding: 0 21px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31px;
+
+  @include mobile {
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  &--black {
+    color: $color-black;
+  }
+
+  &--white {
+    color: $color-white;
+  }
+}
+
+.subtitle {
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 22px;
+
+  @include mobile {
+    font-size: 18px;
+  }
+
+  &--black {
+    color: $color-black;
+  }
+
+  &--white {
+    color: $color-white;
+  }
+}
+
+.desc {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+
+  @include mobile {
+    font-size: 14px;
+  }
+
+  &--black {
+    color: $color-black;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &--white {
+    color: $color-white;
+
+    @include mobile {
+      line-height: 18px;
+    }
+  }
+
+  &--gray {
+    color: $color-gray;
+  }
+
+  &--silver {
+    color: $color-silver;
+  }
+}
+
+.field {
+  padding-left: 22px;
+  width: 100%;
+  height: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  border: 1px solid transparent;
+  transition: border-color .2s ease-out;
+
+  &::placeholder {
+    transition: color .2s ease-out, opacity .2s ease-out;
+  }
+
+  @include mobile {
+    height: 40px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &--dark {
+    color: $color-white;
+    background-color: $color-dark-gray;
+
+    &::placeholder {
+      color: $color-silver;
+    }
+  }
+
+  &--light {
+    color: $color-black;
+    background-color: $color-light-gray;
+
+    &::placeholder {
+      color: $color-gray;
+    }
+  }
+
+  &:not(.focus-visible) {
+    @include hover {
+      &::placeholder  {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &.focus-visible:not(.just-validate-error-field) {
+    border-color: $color-primary;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px 12px 19px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: $color-white;
+  transition: background-color .2s ease-out, border-color .2s ease-out;
+
+  @include mobile {
+    padding: 9px 19px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &--fill {
+    background-color: $color-primary;
+    border: 3px solid transparent;
+
+    @include hover {
+      background-color: $color-dark-primary;
+    }
+
+    &:active {
+      background-color: $color-bright-primary;
+    }
+
+    &.focus-visible {
+      background-color: $color-primary;
+      border-color: $color-bright-primary;
+    }
+  }
+
+  &--stroke {
+    background-color: transparent;
+    border: 3px solid $color-primary;
+
+    @include hover {
+      background-color: $color-primary;
+      border-color: transparent;
+    }
+
+    &:active {
+      background-color: $color-bright-primary;
+      border-color: transparent;
+    }
+
+    &.focus-visible {
+      background-color: $color-dark-primary;
+      border-color: $color-primary;
+    }
+  }
+}
+
+[class*='ground-pane'] {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+[class*='copyrights-pane'] {
+  display: none;
+}
